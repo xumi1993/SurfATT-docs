@@ -32,7 +32,7 @@ In the case of HPCs where `hdf5` for Fortran might not be pre-installed, it is p
 ``` bash
 cd ./SurfATT/external_libs
 
-# make a local install pass
+# make a local install path
 mkdir local_hdf5 
 
 # download hdf5 source
