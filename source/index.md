@@ -4,6 +4,10 @@
 
 This is a package for **Surf**ace wave **A**djoint **T**ravel-time **T**omography driven by modern fortran.
 
+:::{image} ./_static/framework.jpg
+:align: center
+:width: 500px
+:::
 
 ```{toctree}
 :titlesonly:
