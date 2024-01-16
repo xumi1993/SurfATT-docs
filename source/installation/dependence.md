@@ -37,6 +37,14 @@ $ sudo apt install build-essential gfortran cmake libopenmpi-dev openmpi-bin lib
 $ brew install gcc cmake open-mpi hdf5
 ```
 :::
+
+:::{tab-item} Conda
+Opting to install SurfATT within a Conada environment is beneficial in scenarios where compiler or library conflicts arise due to dependencies of other software.
+```
+conda create -n surfatt -c conda-forge gfortran openmpi hdf5 fypp
+conda activate surfatt
+```
+:::
 ::::
 
 ## Install dependencies on HPCs

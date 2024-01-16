@@ -23,6 +23,24 @@ mkdir build && cd build
 cmake .. && make -j4
 ```
 
+### Use specific compilers
+For users intending to utilize specific compilers or install SurfATT within the Conda environment, please prepend the prefix before `cmake`.
+
+::::{tab-set}
+
+:::{tab-item} MacOS
+```
+CXX=gcc-13 FC=gfortran-13 cmake .. && make -j
+```
+:::
+
+:::{tab-item} Conda
+```
+CXX=arm64-apple-darwin20.0.0-clang FC=arm64-apple-darwin20.0.0-gfortran cmake .. && make -j
+```
+:::
+::::
+
 ## Install on HPC
 
 ### Install `hdf5` for Fortran
