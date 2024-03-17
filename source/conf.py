@@ -20,9 +20,7 @@ import os
 project = 'SurfATT'
 copyright = '2023, Mijian Xu'
 author = 'Mijian Xu'
-github_user = "xumi1993"
-github_repo = "SurfATT-docs"
-github_url = "surfatt.xumijian.me"
+release = "1.4.0"
 
 # -- General configuration ---------------------------------------------------
 
@@ -37,6 +35,7 @@ extensions = ['sphinx.ext.githubpages',
               "sphinx.ext.mathjax",
               "sphinx.ext.todo",
               "sphinx.ext.viewcode",
+              'sphinxcontrib.bibtex',
    # To help you with the upgrade to version 5:
    # "sphinxawesome.deprecated",
 ]
@@ -109,31 +108,13 @@ nb_execution_mode = "cache"
 # html_title = project
 # html_css_files = ["custom.css"]
 
-# html_logo = os.path.abspath(os.path.join('.', '_static', 'logo.ico'))
+# html_logo = os.path.abspath(os.path.join('.', '_static', 'logo_long.png'))
+html_favicon = os.path.abspath(os.path.join('.', '_static', 'favicon.ico'))
 
-html_context = {
-    "favicon": "logo.ico",
-    "display_github": True,
-    "github_user": github_user,
-    "github_repo": github_repo,
-    "github_version": "main",
-    "conf_py_path": "/source/",
-    # "theme_vcs_pageview_mode": "blob",
-    "menu_links": [
-        (   '<i class="fa fa-home"></i> 个人主页',
-            "https://xumijian.me/",
-        ),
-        (
-            '<i class="fa fa-github fa-fw"></i> 网站源码',
-            github_url,
-        ),
-        (
-            '<i class="fa fa-edit fa-fw"></i> 个人博客',
-            "https://blog.xumijian.me/",
-        ),
-        (
-            '<i class="fa fa-comments fa-fw"></i> 参与讨论',
-            f"{github_url}/discussions",
-        ),
-    ],
+html_theme_options = {
+    "light_logo": "logo_long.png",
+    "dark_logo": "logo_long_dark.png",
 }
+
+bibtex_bibfiles = ['_static/refs.bib']
+bibtex_reference_style = 'author_year'
