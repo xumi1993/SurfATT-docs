@@ -2,15 +2,16 @@
 # Dependencies
 
 - git
-- Fortran (intel fortran or gfortran>11)
+- Fortran (Intel fortran or gfortran>11)
 - hdf5 (serial version)
 - C++
-- CMake (3.8 or higher)
+- CMake (v3.8 or higher)
 - MPI (v3.0 or higher)
 - fypp (required by external lib [fortran-stdlib](https://github.com/fortran-lang/stdlib))
 
 
 ## Install dependencies on local computers
+
 The compiler and some dependencies can be easily installed on personal computer via built-in software manager
 ::::{tab-set}
 
@@ -20,6 +21,7 @@ Opting to install SurfATT within a Conda environment is beneficial in scenarios 
 conda create -n surfatt -c conda-forge openmpi fypp zlib cxx_compiler fortran_compiler cmake
 conda activate surfatt
 ```
+If a compilation error related to the h5fortran library occurs, it may be due to an incompatibility with the hdf5 package installed via the conda-forge channel. In such cases, try to remove the hdf5 package from the Conda environment and utilize the hdf5 library integrated within h5fortran.
 :::
 
 :::{tab-item} Fedora/CentOS
@@ -66,7 +68,7 @@ module load mpi/intel/20.0.4 hdf5/1.10.6-intel20 cmake/3.23.1
 
 ## Install `fypp`
 
-`fypp` is required by [fortran-stdlib](https://github.com/fortran-lang/stdlib), which can be easily installed via the `pip`:
+`fypp` is required by [fortran-stdlib](https://github.com/fortran-lang/stdlib), which can be easily installed via the `pip` only if the `fypp` is installed via Conda. 
 
 ```
 pip install fypp

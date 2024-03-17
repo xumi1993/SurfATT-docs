@@ -2,7 +2,23 @@
 
 [![Language](https://img.shields.io/badge/-Fortran-734f96?logo=fortran&logoColor=white)](https://github.com/topics/fortran)
 
-This is a package for **Surf**ace wave **A**djoint **T**ravel-time **T**omography driven by modern fortran.
+This is a package for **Surf**ace wave **A**djoint **T**ravel-time **T**omography .
+
+SurfATT is a package for surface wave travel-time tomography, which is designed to invert surface wave travel-time data for 2D/3D isotropic or azimuthal anisotropic velocity structures 
+
+- Inversion for isotropic or azimuthal anisotropic media (Hao et al., 2024b, in preparation)
+- Calculation of surface wave travel time based on Eikonal equation with fast sweeping method (Tong, 2021a)
+- Computation of isotropic and anisotropic sensitivity kernels through adjoint method (Tong, 2021b)
+- Multi-grid model parametrization utilization in optimization (Tong et al., 2019)
+- Consideration of surface topography (Hao et al., 2024a)
+
+SurfATT is an innovative package driven by modern Fortran with an embedded MPI parallel framework. It employs a user-friendly format for both input/output file types, including:
+
+- `yaml` for input parameter files
+- `csv` for input/output travel-time data files
+- `hdf5` for input/output model files
+
+Furthermore, this package provides optimal cross-platform compatibility; it operates perfectly on both personal computers and High-Performance Computing (HPC) systems.
 
 :::{image} ./_static/framework.jpg
 :align: center
@@ -10,8 +26,28 @@ This is a package for **Surf**ace wave **A**djoint **T**ravel-time **T**omograph
 :::
 
 ```{toctree}
+:caption: Installation
+:maxdepth: 3
+:hidden:
+
+installation/dependence
+installation/compile
+```
+
+```{toctree}
+:caption: Usages
 :titlesonly:
 :maxdepth: 3
+:hidden:
 
-installation/index
+usages/rotate_src_rec
 ```
+
+```{toctree}
+:caption: Development
+:hidden:
+
+contributor
+GitHub <https://github.com/xumi1993/SurfATT>
+```
+
