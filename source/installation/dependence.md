@@ -18,7 +18,7 @@ The compiler and some dependencies can be easily installed on personal computer 
 :::{tab-item} Conda
 Opting to install SurfATT within a Conda environment is beneficial in scenarios where compiler or library conflicts arise due to dependencies of other software.
 ```
-conda create -n surfatt -c conda-forge openmpi fypp zlib cxx_compiler fortran_compiler cmake
+conda create -n surfatt -c conda-forge openmpi fypp zlib cxx-compiler fortran-compiler cmake
 conda activate surfatt
 ```
 If a compilation error related to the h5fortran library occurs, it may be due to an incompatibility with the hdf5 package installed via the conda-forge channel. In such cases, try to remove the hdf5 package from the Conda environment and utilize the hdf5 library integrated within h5fortran.
