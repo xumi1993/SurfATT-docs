@@ -1,4 +1,4 @@
-# Rotate Receiver Locations by a Given Angle
+# Rotate receiver locations by a given angle
 
 ## Command `surfatt_rotate_src_rec`
 
