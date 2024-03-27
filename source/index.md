@@ -51,8 +51,9 @@ installation/compile
 :maxdepth: 3
 :hidden:
 
-usages/rotate_src_rec
+usages/src_rec
 usages/topo
+usages/rotate_src_rec
 ```
 
 ```{toctree}
