@@ -6,7 +6,7 @@
 ```
 git clone --recursive https://github.com/xumi1993/SurfATT
 ```
-`--recursive` is required in this command, because dependencies of `yaml-cpp`, `h5fortran`, and `fortran-stdlib` will be download automatically.
+`--recursive` is required in this command, because dependencies of `yaml-cpp` will be download automatically.
 
 <!-- :::{admonition} For chinese users
 :class: note

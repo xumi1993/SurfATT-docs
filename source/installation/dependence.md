@@ -3,11 +3,10 @@
 
 - git
 - Fortran (Intel fortran or gfortran>11)
-- hdf5 (serial version)
 - C++
+- hdf5 (serial version)
 - CMake (v3.8 or higher)
 - MPI (v3.0 or higher)
-- fypp (required by external lib [fortran-stdlib](https://github.com/fortran-lang/stdlib))
 
 
 ## Install dependencies on local computers
@@ -18,7 +17,7 @@ The compiler and some dependencies can be easily installed on personal computer 
 :::{tab-item} Conda
 Opting to install SurfATT within a Conda environment is beneficial in scenarios where compiler or library conflicts arise due to dependencies of other software.
 ```
-conda create -n surfatt -c conda-forge openmpi fypp zlib cxx_compiler fortran_compiler cmake
+conda create -n surfatt -c conda-forge openmpi cxx_compiler fortran_compiler cmake hdf5
 conda activate surfatt
 ```
 If a compilation error related to the h5fortran library occurs, it may be due to an incompatibility with the hdf5 package installed via the conda-forge channel. In such cases, try to remove the hdf5 package from the Conda environment and utilize the hdf5 library integrated within h5fortran.
@@ -56,22 +55,12 @@ The `module-environment` is extensively utilized for managing modules that are r
 ::::{tab-set}
 :::{tab-item} ASPIRE2A@NSCC
 ```
-module purge && module load gcc/11.2.0-nscc libfabric/1.11.0.4.125 openmpi/4.1.5-gcc11 cmake/3.23.1
+module purge && module load gcc/11.2.0-nscc libfabric/1.11.0.4.125 openmpi/4.1.5-gcc11 cmake/3.23.1 hdf5/1.10.5
 ```
 :::
 :::{tab-item} T6@BSCC
 ```
-module load mpi/intel/20.0.4 hdf5/1.10.6-intel20 cmake/3.23.1 
+module purge && module load mpi/intel/20.0.4 hdf5/1.10.6-intel20 cmake/3.23.1 
 ```
 :::
 ::::
-
-## Install `fypp`
-
-`fypp` is required by [fortran-stdlib](https://github.com/fortran-lang/stdlib), which can be easily installed via the `pip` only if the `fypp` is installed via Conda. 
-
-```
-pip install fypp
-```
-
-There are multiple method for installing `fypp`. Please see [fypp documentation](https://fypp.readthedocs.io/en/stable/fypp.html#installing) for detailed instructions.
