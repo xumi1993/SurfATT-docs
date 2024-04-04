@@ -1,6 +1,6 @@
-# `surfatt_rotate_src_rec`
+# Rotate receiver locations by a given angle
 
-## Usage
+## Command `surfatt_rotate_src_rec`
 
 The `surfatt_rotate_src_rec` command is used to rotate the location of sources and receivers by a given angle. The command is called as follows:
 

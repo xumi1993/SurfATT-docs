@@ -51,6 +51,8 @@ installation/compile
 :maxdepth: 3
 :hidden:
 
+usages/src_rec
+usages/topo
 usages/rotate_src_rec
 ```
 
