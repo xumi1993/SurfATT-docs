@@ -4,7 +4,7 @@
 ## Clone the source codes
 
 ```
-git clone --recursive https://github.com/xumi1993/SurfATT
+git clone --recursive https://github.com/xumi1993/SurfATT-iso
 ```
 `--recursive` is required in this command, because dependencies of `yaml-cpp` will be download automatically.
 
