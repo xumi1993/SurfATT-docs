@@ -23,11 +23,19 @@ conda activate surfatt
 If a compilation error related to the h5fortran library occurs, it may be due to an incompatibility with the hdf5 package installed via the conda-forge channel. In such cases, try to remove the hdf5 package from the Conda environment and utilize the hdf5 library integrated within h5fortran.
 :::
 
-:::{tab-item} Fedora/CentOS
+:::{tab-item} Fedora
 :sync: fedora
 
 ```
 $ sudo dnf install gcc gcc-gfortran gcc-c++ cmake openmpi-devel hdf5-devel
+```
+:::
+
+:::{tab-item} CentOS
+:sync: CentOS
+
+```
+$ sudo dnf install gcc-toolset-11 cmake openmpi-devel hdf5-devel
 ```
 :::
 
