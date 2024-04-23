@@ -79,3 +79,14 @@ make -j
 ```
 
 Then the executable `surfatt_tomo` and `surftomo_cb_fwd` are created in the `bin` directory.
+
+# Update SurfATT
+
+To update SurfATT, users can simply pull the latest changes from the repository and recompile the code.
+
+```bash
+cd path/to/SurfATT-iso
+git pull
+```
+
+Then recompile the code as described in the previous section.
