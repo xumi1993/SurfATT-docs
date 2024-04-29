@@ -23,4 +23,4 @@ The `pos_str` is the center of rotation in latitude and longitude, and the `angl
 
 ![](../_static/rotated_topo.png)
 
-The rotated topography file `hawaii_rotated.nc` can be used as the input parameter `topo_file` in the SurfATT package for surface wave tomography inversion.
+The rotated topography file `hawaii_rotated.nc` can be used as the input parameter `topo_file` in the SurfATT package for the inversion.
