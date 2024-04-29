@@ -23,6 +23,19 @@ SurfATT is a package for surface wave travel-time tomography, which is designed 
 - Multi-grid model parametrization utilization in optimization {cite:p}`tong2019`.
 - Consideration of surface topography in forward and adjoint simulation {cite:p}`hao2023`.
 
+:::{image} ./_static/framework.png
+:align: center
+:width: 500px
+:class: only-light
+:::
+
+:::{image} ./_static/framework-dark.png
+:align: center
+:width: 500px
+:class: only-dark
+:::
+
+
 SurfATT is an innovative package driven by modern Fortran with an embedded MPI parallel framework. It employs a user-friendly format for both input/output file types, including:
 
 - `yaml` for input parameter files
@@ -30,11 +43,6 @@ SurfATT is an innovative package driven by modern Fortran with an embedded MPI p
 - `hdf5` for input/output model files
 
 Furthermore, this package provides optimal cross-platform compatibility; it operates perfectly on both personal computers and High-Performance Computing (HPC) systems.
-
-:::{image} ./_static/framework.jpg
-:align: center
-:width: 500px
-:::
 
 ```{toctree}
 :caption: Installation
@@ -62,9 +70,10 @@ usages/tomography
 :hidden:
 
 contributor
-GitHub <https://github.com/xumi1993/SurfATT>
+GitHub <https://github.com/xumi1993/SurfATT-iso>
 ```
 
+## References
 :::{bibliography}
 :style: unsrt
 :::
