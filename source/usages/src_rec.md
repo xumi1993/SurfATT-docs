@@ -58,16 +58,29 @@ We assume the `wavelen_factor` as {math}`\alpha` and the wavelength of the surfa
 
 ### `inversion`
 
-- `niter`: maximum iteration number of the inversion.
-- `min_derr`: minimum error change of the inversion.
-- `ncomponents`: number of components of the inversion grids.
-- `n_inv_grid`: Int list with 3 elements, indicating number of inversion grids along longitude, latitude, and depth.
+#### Initial model
+
 - `init_model_type`: type of initial model (0: `1D`, 1: `3D`).
   - `0`: Increase from `vel_range[0]` to `vel_range[1]` linearly.
   - `1`: Do 1-D inversion first using the average surface wave velocity data.
   - `2`: Specify the 3-D initial model file with the same format as the output model file in hdf5 format.
 - `vel_range`: List with 2 elements, indicating the range of the initial model.
 - `init_model_path`: Path to the 3-D initial model file.
-- `optim_method`: Optimization method of the inversion (0: `Grad_descent`, 1: `halve-stepping`).
-- `step_length`: Step length of the inversion.
+
+#### kernel Regularization
+
 - `kdensity_coe`: Coefficient to rescale the final kernel:  kernel -> kernel / pow(density of kernel, Kdensity_coe).
+- `ncomponents`: number of components of the inversion grids.
+- `n_inv_grid`: Int list with 3 elements, indicating number of inversion grids along longitude, latitude, and depth.
+
+#### Inversion parameters
+
+- `niter`: maximum iteration number of the inversion.
+- `min_derr`: minimum error change of the inversion.
+
+#### Optimization parameters
+
+- `optim_method`: Optimization method of the inversion (0: `Grad_descent`, 1: `Non-linear Conjugate Gradient`, 2: `L-BFGS`).
+- `step_length`: Step length of the inversion.
+- `max_sub_niter`: Maximum sub-iterations for line search.
+- `maxshrink`: Maximum step length descent.

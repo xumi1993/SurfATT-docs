@@ -52,8 +52,9 @@ installation/compile
 :hidden:
 
 usages/src_rec
-usages/topo
 usages/rotate_src_rec
+usages/topo
+usages/tomography
 ```
 
 ```{toctree}
