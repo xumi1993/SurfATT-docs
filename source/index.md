@@ -63,6 +63,7 @@ usages/src_rec
 usages/rotate_src_rec
 usages/topo
 usages/tomography
+usages/outputs
 ```
 
 ```{toctree}
@@ -74,6 +75,7 @@ GitHub <https://github.com/xumi1993/SurfATT-iso>
 ```
 
 ## References
+
 :::{bibliography}
 :style: unsrt
 :::
