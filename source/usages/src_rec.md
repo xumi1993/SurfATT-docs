@@ -1,8 +1,4 @@
-# Preparation
-
-The SurfATT package requires the travel-time data file and the input parameter file to perform the surface wave tomography inversion. The travel-time data file contains the observed surface wave travel-time, and the input parameter file contains the parameters for the inversion.
-
-## Travel-time data file
+# Travel-time data file
 
 The travel-time data can be obtained from the observed surface wave dispersion. The travel-time data should be stored in a `csv` file with the following columns:
 
@@ -20,65 +16,90 @@ The travel-time data can be obtained from the observed surface wave dispersion. 
 
 A template of the travel-time data file can be found [here](../_static/src_rec_file_ph.csv).
 
-## Input parameter file
+## Rotate receiver locations by a given angle
 
-The input parameter file is in the `yaml` format. The input parameter file should contain the following sections with parameters:
+### Command `surfatt_rotate_src_rec`
 
-### `data`
+The `surfatt_rotate_src_rec` command is used to rotate the location of sources and receivers by a given angle. The command is called as follows:
 
-- `src_rec_file_ph`: path to the travel-time data file of phase velocity
-- `src_rec_file_gr`: path to the travel-time data file of group velocity
-- `iwave`: type of surface wave (1 Love wave (not included in the current version), 2 Rayleigh wave )
-- `vel_type`: Bool list with 2 elements, indicating the type of velocity model e.g., `[True, False]` for phase velocity only.
-- `weights`: Float list with 2 elements, indicating the weight of phase and group velocity data e.g., `[1.0, 0.0]` for phase velocity only.
-
-### `domain`
-
-- `depth`: List with 2 elements, indicating depth range of the model.
-- `interval`: List with 3 elements, indicating the interval of the model along longitude, latitude, and depth.
-- `num_grid_margin`: Int, indicating the grid number of margin area for the domain.
-  
-### `topo`
-
-- `is_consider_topo`: Bool, indicating whether to consider the model with topography.
-- `topo_file`: path to the surface topography file in `netcdf` format.
-- `wavelen_factor`: Float, indicating the smoothing factor of the topography.
-
-```{note}
-We assume the `wavelen_factor` as {math}`\alpha` and the wavelength of the surface wave is {math}`\lambda`. A gaussian smoothing filter with a standard deviation of {math}`\sigma = \alpha \lambda` is applied to the topography.
+```{code-block} console
+ Usage: surfatt_rotate_src_rec -i src_rec_file -a angle [-o out_src_rec_file]
+ 
+ Rotate source and receiver locations by a given angle (anti-clockwise)
+ 
+ required arguments:
+  -i src_rec_file      Path to src_rec file in csv format
+  -a angle             Angle in degree to rotate source and receiver locations
+  -c clat/clon         Center of rotation in latitude and longitude
+ 
+ optional arguments:
+  -o out_file          Output file name, defaults to src_rec_file "_rot" appended
 ```
 
-### `output`
+The `surfatt_rotate_src_rec` command reads the source and receiver locations from the input file `src_rec_file` and rotates them by the given angle `angle` (in anti-clockwise degrees) about the center of rotation `clat/clon`. The rotated source and receiver locations are written to the output file `out_src_rec_file`. If the output file is not specified, the rotated source and receiver locations are written to a file with the name `src_rec_file` appended with `_rot`.
 
-- `output_path`: path to the output files.
-- `format`: output format of the model file (available for `hdf5` or `csv`).
-- `log_level`: log level of the output (available for 0: `DEBUG`, 1:`INFO`).
+### Example
 
-### `inversion`
+In the following example, the source and receiver locations are rotated by `-30` degrees about the center of rotation `(19.5, -155.5)` and written to the output file `src_rec_file_rotated.csv`. To illustrate this example, we use Jupyter Notebook to invoke the `surfatt_rotate_src_rec` command, and plot the original and rotated source and receiver locations.
 
-#### Initial model
+:::{note}
+This Jupyter Notebook example can be found [here](https://github.com/xumi1993/SurfATT/blob/surfker/examples/rotation/rotation.ipynb).
+:::
 
-- `init_model_type`: type of initial model (0: `1D`, 1: `3D`).
-  - `0`: Increase from `vel_range[0]` to `vel_range[1]` linearly.
-  - `1`: Do 1-D inversion first using the average surface wave velocity data.
-  - `2`: Specify the 3-D initial model file with the same format as the output model file in hdf5 format.
-- `vel_range`: List with 2 elements, indicating the range of the initial model.
-- `init_model_path`: Path to the 3-D initial model file.
+First, we import the required Python packages:
 
-#### kernel Regularization
+```{code-block} python
+import pandas as pd
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+import cartopy.feature as cfeature
+```
 
-- `kdensity_coe`: Coefficient to rescale the final kernel:  kernel -> kernel / pow(density of kernel, Kdensity_coe).
-- `ncomponents`: number of components of the inversion grids.
-- `n_inv_grid`: Int list with 3 elements, indicating number of inversion grids along longitude, latitude, and depth.
+A function to plot the source and receiver locations is defined as follows:
 
-#### Inversion parameters
+```{code-block} python
+def plot_basemap(region, feature=True):
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1, projection=ccrs.Mercator())
+    ax.set_extent(region, crs=ccrs.PlateCarree())
+    gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True,
+                      linewidth=1, color='gray', alpha=0.5, linestyle='--')
+    if feature:
+        ax.coastlines()
+        # plot land
+        ax.add_feature(cfeature.LAND)
+    return ax
+```
 
-- `niter`: maximum iteration number of the inversion.
-- `min_derr`: minimum error change of the inversion.
+Next, we read the source and receiver locations from the input file `src_rec_file.csv` and plot them:
 
-#### Optimization parameters
+```{code-block} python
+sr = pd.read_csv('src_rec_file.csv')
+ax = plot_basemap([-156.3, -154.7, 18.8, 20.4])
+ax.plot(sr['stlo'], sr['stla'], 'r^', markersize=5, transform=ccrs.PlateCarree())
+```
 
-- `optim_method`: Optimization method of the inversion (0: `Grad_descent`, 1: `Non-linear Conjugate Gradient`, 2: `L-BFGS`).
-- `step_length`: Step length of the inversion.
-- `max_sub_niter`: Maximum sub-iterations for line search.
-- `maxshrink`: Maximum step length descent.
+![](../_static/rotate_src_rec_original.png)
+
+The source and receiver locations are then rotated by `-30` degrees about the center of rotation `(19.5, -155.5)` and written to the output file `src_rec_file_rotated.csv`:
+
+```{code-block}
+! surfatt_rotate_src_rec -i src_rec_file.csv -a -30 -c 19.5/-155.5 -o src_rec_file_rotated.csv
+```
+
+Finally, we read the rotated source and receiver locations from the output file `src_rec_file_rotated.csv` and plot them:
+
+```{code-block} python
+sr_rotated = pd.read_csv('src_rec_file_rotated.csv')
+minx = sr_rotated['stlo'].min()
+maxx = sr_rotated['stlo'].max()
+miny = sr_rotated['stla'].min()
+maxy = sr_rotated['stla'].max()
+marginx = (maxx - minx) * 0.1
+marginy = (maxy - miny) * 0.1
+region = [minx - marginx, maxx + marginx, miny - marginy, maxy + marginy]
+ax = plot_basemap(region, feature=False)
+ax.plot(sr_rotated['stlo'], sr_rotated['stla'], 'r^', markersize=5, transform=ccrs.PlateCarree())
+```
+
+![](../_static/rotate_src_rec_rotated.png)

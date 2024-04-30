@@ -25,13 +25,13 @@ SurfATT is a package for surface wave travel-time tomography, which is designed 
 
 :::{image} ./_static/framework.png
 :align: center
-:width: 500px
+:width: 600px
 :class: only-light
 :::
 
 :::{image} ./_static/framework-dark.png
 :align: center
-:width: 500px
+:width: 600px
 :class: only-dark
 :::
 
@@ -59,8 +59,8 @@ installation/compile
 :maxdepth: 3
 :hidden:
 
+usages/inputs
 usages/src_rec
-usages/rotate_src_rec
 usages/topo
 usages/tomography
 usages/outputs

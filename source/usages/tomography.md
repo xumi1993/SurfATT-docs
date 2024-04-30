@@ -2,8 +2,8 @@
 
 We have prepared 2 or 3 files for the tomography inversion:
 
-- Travel-time data file
 - Input parameter file
+- Travel-time data file
 - Surface topography file (optional)
 
 
