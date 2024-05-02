@@ -43,9 +43,14 @@ We assume the `wavelen_factor` as {math}`\alpha` and the wavelength of the surfa
 - `vel_range`: List with 2 elements, indicating the range of the initial model.
 - `init_model_path`: Path to the 3-D initial model file.
 
-### kernel Regularization
+### Kernel Regularization
 
-- `kdensity_coe`: Coefficient to rescale the final kernel:  kernel -> kernel / pow(density of kernel, Kdensity_coe).
+- `kdensity_coe`: Coefficient to rescale the final kernel
+
+```{note}
+we assume the `kdensity_coe` as {math}`\alpha`. The kernel {math}`K` is rescaled as {math}`\frac{1}{K_{den}^\alpha}`, where the {math}`K_{den}` is the total kernel density. The `kdensity_coe` is usually set between 0.0 and 1.0.
+```
+
 - `ncomponents`: number of components of the inversion grids.
 - `n_inv_grid`: Int list with 3 elements, indicating number of inversion grids along longitude, latitude, and depth.
 
