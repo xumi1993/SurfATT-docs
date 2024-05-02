@@ -86,17 +86,26 @@ z = np.unique(fm_tab["dep"].values)
 fig = pygmt.Figure()
 region=[-156.2, -154.6, 18.9, 20.2]
 dep = [2, 4, 6, 8]
-with fig.subplot(nrows=2, ncols=2, figsize=("10c", "10c"), frame=["af", "WSne"]):
+pygmt.config(MAP_FRAME_TYPE="plain")
+with fig.subplot(nrows=2, ncols=2, figsize=("12c", "12c"), sharex='b', sharey='l', frame=["af", "WSne"]):
     for i, depth in enumerate(dep):
         close_dep = z[np.abs(z-depth).argmin()]
         data = fm_tab[fm_tab["dep"]==close_dep]
         fig.basemap(region=region, projection="M?", panel=i)
+        grid = pygmt.grdcut("@earth_relief_15s", region=region)
+        pygmt.makecpt(cmap="gray", series=[-6000, 9000, 10], reverse=True)
+        fig.grdimage(grid, region=region, projection="M?", cmap=True, shading=True)
         grid = pygmt.surface(x=data['lon'], y=data['lat'], z=data['vs'], region=region, spacing="0.01" )
         vmax = data['vs'].max()+0.05; vmin = data['vs'].min()-0.05
         pygmt.makecpt(cmap="seis", series=[vmin, vmax])
         fig.coast(area_thresh=10, resolution='f', land=True)
         fig.grdimage(grid=grid, cmap=True)
         fig.coast(Q=True)
-        fig.colorbar(frame=['a0.2g0.2'])
+        fig.text(text=f'{close_dep} km', position='TL', justify='TL', offset='0.1c/-0.1c', fill='white', font='12p')
+        fig.colorbar(frame=['a0.2g0.2', 'y+l"Vs (km/s)"'])
 fig.show()
 ```
+
+:::{image} ../_static/hawaii_tomo.png
+:align: center
+:::
