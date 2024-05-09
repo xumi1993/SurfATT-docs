@@ -20,7 +20,6 @@ Opting to install SurfATT within a Conda environment is beneficial in scenarios 
 conda create -n surfatt -c conda-forge openmpi cxx-compiler fortran-compiler cmake hdf5
 conda activate surfatt
 ```
-If a compilation error related to the h5fortran library occurs, it may be due to an incompatibility with the hdf5 package installed via the conda-forge channel. In such cases, try to remove the hdf5 package from the Conda environment and utilize the hdf5 library integrated within h5fortran.
 :::
 
 :::{tab-item} Fedora
