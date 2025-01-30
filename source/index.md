@@ -13,7 +13,13 @@
 
 [![Language](https://img.shields.io/badge/-Fortran-734f96?logo=fortran&logoColor=white)](https://github.com/topics/fortran)
 
-This is a package for **Surf**ace wave **A**djoint **T**ravel-time **T**omography .
+This is a package for **Surf**ace wave **A**djoint **T**ravel-time **T**omography.
+
+:::{admonition} Citation
+:class: note
+Mijian Xu, Shijie Hao, Jing Chen, Bingfeng Zhang, Ping Tong; SurfATT: High‐Performance Package for Adjoint‐State Surface‐Wave Travel‐Time Tomography. **Seismological Research Letters** (2025); doi: https://doi.org/10.1785/0220240206; [[PDF]](./_static/srl2025.pdf)
+:::
+
 
 SurfATT is a package for surface wave travel-time tomography, which is designed to invert surface wave travel-time data for 2D/3D isotropic or azimuthal anisotropic velocity structures with following features:
 
@@ -64,6 +70,7 @@ usages/src_rec
 usages/topo
 usages/tomography
 usages/outputs
+usages/template
 ```
 
 ```{toctree}
