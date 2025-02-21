@@ -62,7 +62,7 @@ The `module-environment` is extensively utilized for managing modules that are r
 ::::{tab-set}
 :::{tab-item} ASPIRE2A@NSCC
 ```
-module purge && module load gcc/11.2.0-nscc libfabric/1.11.0.4.125 openmpi/4.1.5-gcc11 cmake/3.23.1 hdf5/1.10.5
+module purge && module load gcc/11.2.0-nscc libfabric/1.11.0.4.125 openmpi/4.1.7-gcc11 cmake/3.23.1 hdf5/1.10.5
 ```
 :::
 :::{tab-item} T6@BSCC
