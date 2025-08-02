@@ -1,0 +1,467 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Template of Parameter file" href="template.html" /><link rel="prev" title="Tomography" href="tomography.html" />
+        <link rel="prefetch" href="../_static/logo_long.png" as="image" />
+        <link rel="prefetch" href="../_static/logo_long_dark.png" as="image" />
+
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2025.07.19 -->
+        <title>Outputs and Visualization - SurfATT</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">SurfATT</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><div class="sidebar-scroll"><a class="sidebar-brand" href="../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../_static/logo_long.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../_static/logo_long_dark.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">SurfATT</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/dependence.html">Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/compile.html">Download and compile SurfATT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/compile.html#update-surfatt">Update SurfATT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usages</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="inputs.html">Input parameter file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src_rec.html">Travel-time data file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topo.html">Surface topography file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tomography.html">Tomography</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Outputs and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template.html">Template of Parameter file</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributor.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/xumi1993/SurfATT-iso">GitHub</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/usages/outputs.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="outputs-and-visualization">
+<h1>Outputs and Visualization<a class="headerlink" href="#outputs-and-visualization" title="Link to this heading">¶</a></h1>
+<p>After the execution of the <code class="docutils literal notranslate"><span class="pre">surfatt_tomo</span></code>, the outputs of the tomography are stored in the directory that is specified in the input parameter file. The outputs include the following files:</p>
+<section id="output-files">
+<h2>Output files<a class="headerlink" href="#output-files" title="Link to this heading">¶</a></h2>
+<section id="required-outputs">
+<h3>Required outputs<a class="headerlink" href="#required-outputs" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">final_model.h5</span></code>: The final model file that contains the S-wave velocity model with following attributes:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">vs</span></code>: S-wave velocity model in km/s, with the shape of <code class="docutils literal notranslate"><span class="pre">(nx,</span> <span class="pre">ny,</span> <span class="pre">nz)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lon</span></code>: Longitude of the model in degree with the shape of <code class="docutils literal notranslate"><span class="pre">(nx)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lat</span></code>: Latitude of the model in degree with the shape of <code class="docutils literal notranslate"><span class="pre">(ny)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code>: Depth of the model in km with the shape of <code class="docutils literal notranslate"><span class="pre">(nz)</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">objective_function.csv</span></code>: The objective function value of each iteration during the inversion process. The columns are:</p>
+<ul>
+<li><p>Iteration number</p></li>
+<li><p>Misfit value</p></li>
+<li><p>Step length</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="optional-outputs-verbose-level-0">
+<h3>Optional outputs (<code class="docutils literal notranslate"><span class="pre">verbose_level</span></code> &gt; 0)<a class="headerlink" href="#optional-outputs-verbose-level-0" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model_iter.h5</span></code>: The model file of each iteration during the inversion process. The file contains the attributes:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">vs_{xxx}</span></code>: S-wave velocity model of iteration <code class="docutils literal notranslate"><span class="pre">{xxx}</span></code> in km/s, with the shape of <code class="docutils literal notranslate"><span class="pre">(nx,</span> <span class="pre">ny,</span> <span class="pre">nz)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gradient_{xxx}</span></code>: Preconditioned gradient of iteration <code class="docutils literal notranslate"><span class="pre">{xxx}</span></code>, with the shape of <code class="docutils literal notranslate"><span class="pre">(nx,</span> <span class="pre">ny,</span> <span class="pre">nz)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">direction_{xxx}</span></code>: Descent direction using <code class="docutils literal notranslate"><span class="pre">CG</span></code> and <code class="docutils literal notranslate"><span class="pre">LBFGS</span></code> method of iteration <code class="docutils literal notranslate"><span class="pre">{xxx}</span></code>, with the shape of <code class="docutils literal notranslate"><span class="pre">(nx,</span> <span class="pre">ny,</span> <span class="pre">nz)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kdensity_{ph}_{xxx}</span></code>: Kernel density of phase <code class="docutils literal notranslate"><span class="pre">{ph}</span></code> (available for <code class="docutils literal notranslate"><span class="pre">ph</span></code> or <code class="docutils literal notranslate"><span class="pre">gr</span></code>) of iteration <code class="docutils literal notranslate"><span class="pre">{xxx}</span></code>, with the shape of <code class="docutils literal notranslate"><span class="pre">(nx,</span> <span class="pre">ny,</span> <span class="pre">nz)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lon</span></code>: Longitude of the model in degree with the shape of <code class="docutils literal notranslate"><span class="pre">(nx)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lat</span></code>: Latitude of the model in degree with the shape of <code class="docutils literal notranslate"><span class="pre">(ny)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code>: Depth of the model in km with the shape of <code class="docutils literal notranslate"><span class="pre">(nz)</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="optional-outputs-verbose-level-1">
+<h3>Optional outputs (<code class="docutils literal notranslate"><span class="pre">verbose_level</span></code> &gt; 1)<a class="headerlink" href="#optional-outputs-verbose-level-1" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src_rec_file_{ph}_forward.csv</span></code>: The forward simulated travel-time data file of phase <code class="docutils literal notranslate"><span class="pre">{ph}</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>writing this file is time-consuming and memory-consuming, so it is recommended to set <code class="docutils literal notranslate"><span class="pre">verbose_level</span></code> to 1 for <strong>large-scale</strong> inversion.</p>
+</div>
+</section>
+</section>
+<section id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Link to this heading">¶</a></h2>
+<p>we recommend using the <code class="docutils literal notranslate"><span class="pre">PyGMT</span></code> package to visualize the outputs of the tomography. Please refer to <code class="docutils literal notranslate"><span class="pre">examples/xxxx/plot_model.ipynb</span></code> for examples to visualize the final model.</p>
+</section>
+<section id="rotate-the-model-back-to-the-original-coordinate-system">
+<h2>Rotate the model back to the original coordinate system<a class="headerlink" href="#rotate-the-model-back-to-the-original-coordinate-system" title="Link to this heading">¶</a></h2>
+<p>If the topography, the sources, and the receivers are rotated before the inversion, you can use the <code class="docutils literal notranslate"><span class="pre">surfatt_rotate_model</span></code> command to rotate the model back to the original coordinate system. The command is called as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Usage: surfatt_rotate_model -i model_file -a angle -c clat/clon -o out_model_file [-h]</span>
+<span class="go"> </span>
+<span class="go"> Rotate model by a given angle (anti-clockwise) and convert to csv format. If angle and center location are not provided, the model will be converted to csv format directly without rotation</span>
+<span class="go"> </span>
+<span class="go"> required arguments:</span>
+<span class="go">  -i model_file        Path to model file in netcdf format</span>
+<span class="go">  -o out_file          Output file name</span>
+<span class="go"> </span>
+<span class="go"> optional arguments:</span>
+<span class="go">  -a angle             Angle in degree to rotate model</span>
+<span class="go">  -c clat/clon         Center of rotation in latitude and longitude</span>
+<span class="go">  -h                   Print help message</span>
+</pre></div>
+</div>
+<p>For the Hawaii example, we can rotate the final model back to the original coordinate system using the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">angle_back</span><span class="o">=</span><span class="m">30</span>
+<span class="nv">pos_str</span><span class="o">=</span><span class="m">19</span>.5/-155.5
+
+surfatt_rotate_model<span class="w"> </span>-i<span class="w"> </span>OUTPUT_FILES/final_model.h5<span class="w"> </span>-a<span class="w"> </span><span class="nv">$angle_back</span><span class="w"> </span>-c<span class="w"> </span><span class="nv">$pos_str</span><span class="w"> </span>-o<span class="w"> </span>OUTPUT_FILES/final_model.csv
+</pre></div>
+</div>
+<p>The rotated model is stored in the <code class="docutils literal notranslate"><span class="pre">final_model.csv</span></code> file with 4 columns: <code class="docutils literal notranslate"><span class="pre">lat</span></code>, <code class="docutils literal notranslate"><span class="pre">lon</span></code>, <code class="docutils literal notranslate"><span class="pre">depth</span></code>, and <code class="docutils literal notranslate"><span class="pre">vs</span></code>.</p>
+<p>The following is an example script to visualize the final model by reading this <code class="docutils literal notranslate"><span class="pre">final_model.csv</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pygmt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Load the final model</span>
+<span class="n">fm_tab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./OUTPUT_FILES/final_model.csv&quot;</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">fm_tab</span><span class="p">[</span><span class="s2">&quot;dep&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="c1"># Plot the final model</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">region</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">156.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">154.6</span><span class="p">,</span> <span class="mf">18.9</span><span class="p">,</span> <span class="mf">20.2</span><span class="p">]</span>
+<span class="n">dep</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">pygmt</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">MAP_FRAME_TYPE</span><span class="o">=</span><span class="s2">&quot;plain&quot;</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;12c&quot;</span><span class="p">,</span> <span class="s2">&quot;12c&quot;</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;af&quot;</span><span class="p">,</span> <span class="s2">&quot;WSne&quot;</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">depth</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dep</span><span class="p">):</span>
+        <span class="n">close_dep</span> <span class="o">=</span> <span class="n">z</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">depth</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">()]</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">fm_tab</span><span class="p">[</span><span class="n">fm_tab</span><span class="p">[</span><span class="s2">&quot;dep&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">close_dep</span><span class="p">]</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">basemap</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;M?&quot;</span><span class="p">,</span> <span class="n">panel</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">grdcut</span><span class="p">(</span><span class="s2">&quot;@earth_relief_15s&quot;</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
+        <span class="n">pygmt</span><span class="o">.</span><span class="n">makecpt</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">series</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">6000</span><span class="p">,</span> <span class="mi">9000</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">grdimage</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;M?&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shading</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">surface</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">],</span> <span class="n">z</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;vs&#39;</span><span class="p">],</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="s2">&quot;0.01&quot;</span> <span class="p">)</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;vs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mf">0.05</span><span class="p">;</span> <span class="n">vmin</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;vs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mf">0.05</span>
+        <span class="n">pygmt</span><span class="o">.</span><span class="n">makecpt</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;seis&quot;</span><span class="p">,</span> <span class="n">series</span><span class="o">=</span><span class="p">[</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="p">])</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">coast</span><span class="p">(</span><span class="n">area_thresh</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="n">land</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">grdimage</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">coast</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">close_dep</span><span class="si">}</span><span class="s1"> km&#39;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;TL&#39;</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="s1">&#39;TL&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="s1">&#39;0.1c/-0.1c&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="s1">&#39;12p&#39;</span><span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a0.2g0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;y+l&quot;Vs (km/s)&quot;&#39;</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/hawaii_tomo.png" class="align-center" src="../_images/hawaii_tomo.png" />
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="template.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Template of Parameter file</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="tomography.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Tomography</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Mijian Xu
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Outputs and Visualization</a><ul>
+<li><a class="reference internal" href="#output-files">Output files</a><ul>
+<li><a class="reference internal" href="#required-outputs">Required outputs</a></li>
+<li><a class="reference internal" href="#optional-outputs-verbose-level-0">Optional outputs (<code class="docutils literal notranslate"><span class="pre">verbose_level</span></code> &gt; 0)</a></li>
+<li><a class="reference internal" href="#optional-outputs-verbose-level-1">Optional outputs (<code class="docutils literal notranslate"><span class="pre">verbose_level</span></code> &gt; 1)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#visualization">Visualization</a></li>
+<li><a class="reference internal" href="#rotate-the-model-back-to-the-original-coordinate-system">Rotate the model back to the original coordinate system</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=9172181d"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=30646c52"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    </body>
+</html>
