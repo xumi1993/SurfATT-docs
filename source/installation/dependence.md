@@ -2,7 +2,7 @@
 # Dependencies
 
 - git
-- Fortran (Intel fortran or gfortran>11)
+- Fortran (Intel Fortran or gfortran>11)
 - C++
 - hdf5 (serial version)
 - CMake (v3.8 or higher)
@@ -17,7 +17,7 @@ The compiler and some dependencies can be easily installed on personal computer 
 :::{tab-item} Conda
 Opting to install SurfATT within a Conda environment is beneficial in scenarios where compiler or library conflicts arise due to dependencies of other software.
 ```
-conda create -n surfatt -c conda-forge openmpi cxx-compiler fortran-compiler cmake hdf5
+conda create -n surfatt -c conda-forge openmpi cxx-compiler fortran-compiler cmake hdf5 yaml-cpp
 conda activate surfatt
 ```
 :::
